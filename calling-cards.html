@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Studio Malditas — Calling Card Concepts</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --red:#c41230;
+    --red-muted:#8b0d21;
+    --bg:#0a0a0a;
+    --bg-2:#111111;
+    --bg-3:#171717;
+    --white:#ffffff;
+    --gray:#888888;
+    --gray-light:#aaaaaa;
+    --border:#222222;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    background:#050505;
+    color:var(--white);
+    font-family:'Inter',sans-serif;
+    padding:60px 40px;
+  }
+  h1{
+    font-family:'Bebas Neue',sans-serif;
+    font-size:42px;
+    letter-spacing:4px;
+    text-align:center;
+    margin-bottom:8px;
+  }
+  h1 em{ color:var(--red); font-style:normal; }
+  p.sub{
+    text-align:center;
+    color:var(--gray-light);
+    font-weight:300;
+    margin-bottom:60px;
+    letter-spacing:1px;
+  }
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:48px;
+    max-width:1450px;
+    margin:0 auto;
+  }
+  .pair{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    align-items:center;
+  }
+  .label{
+    font-family:'Bebas Neue',sans-serif;
+    letter-spacing:3px;
+    color:var(--gray);
+    font-size:14px;
+  }
+  .cards{
+    display:flex;
+    gap:14px;
+  }
+  .card{
+    width:336px;
+    height:192px;
+    border-radius:6px;
+    position:relative;
+    overflow:hidden;
+    box-shadow:0 12px 40px rgba(0,0,0,0.5);
+    flex-shrink:0;
+  }
+  /* shared text styles */
+  .biz-name{ font-family:'Bebas Neue',sans-serif; letter-spacing:2px; }
+  .role{ font-family:'Inter',sans-serif; font-weight:300; letter-spacing:2px; text-transform:uppercase; }
+  .contact{ font-family:'Inter',sans-serif; font-weight:300; line-height:1.6; }
+
+  /* ===== CARD 1: Classic dark, centered flame mark, red rule ===== */
+  .c1{
+    background:var(--bg);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    border:1px solid var(--border);
+  }
+  .c1 img{ width:34px; margin-bottom:10px; }
+  .c1 .biz-name{ font-size:18px; }
+  .c1 .tagline{ font-size:8px; color:var(--red); letter-spacing:2px; margin:6px 0 14px; text-transform:uppercase; }
+  .c1 .role{ font-size:10px; color:var(--gray-light); }
+  .c1 .contact{ font-size:9px; color:var(--gray); margin-top:10px; }
+
+  .c1b{ background:var(--bg); display:flex; align-items:center; justify-content:center; border:1px solid var(--border); }
+  .c1b img{ width:46px; opacity:0.9; }
+
+  /* ===== CARD 2: Red block left, name right ===== */
+  .c2{
+    background:var(--bg);
+    display:grid;
+    grid-template-columns:90px 1fr;
+    border:1px solid var(--border);
+  }
+  .c2 .block{ background:var(--red); display:flex; align-items:center; justify-content:center; }
+  .c2 .block img{ width:30px; filter:brightness(0) invert(1); }
+  .c2 .content{ padding:24px; display:flex; flex-direction:column; justify-content:center; }
+  .c2 .biz-name{ font-size:18px; line-height:1.15; }
+  .c2 .role{ font-size:9px; color:var(--gray-light); margin:6px 0 14px; letter-spacing:1px; }
+  .c2 .contact{ font-size:9px; color:var(--gray); }
+
+  .c2b{ background:var(--red); display:flex; align-items:center; justify-content:center; border:1px solid var(--border); }
+  .c2b .biz-name{ color:var(--bg); font-size:20px; letter-spacing:6px; }
+
+  /* ===== CARD 3: Minimal centered serif wordmark ===== */
+  .c3{
+    background:var(--bg-2);
+    display:flex; flex-direction:column; align-items:flex-start; justify-content:space-between;
+    padding:26px 28px;
+    border:1px solid var(--border);
+  }
+  .c3 .biz-name{ font-family:'DM Serif Display', serif; font-size:24px; font-style:italic; }
+  .c3 .biz-name span{ color:var(--red); }
+  .c3 .role{ font-size:8px; color:var(--gray-light); letter-spacing:1px; }
+  .c3 .contact{ font-size:9px; color:var(--gray); }
+  .c3 .row{ width:100%; display:flex; justify-content:space-between; align-items:flex-end; }
+
+  .c3b{ background:var(--bg-2); display:flex; align-items:center; justify-content:center; border:1px solid var(--border); position:relative; }
+  .c3b::before{ content:''; position:absolute; inset:14px; border:1px solid var(--border); }
+  .c3b img{ width:38px; opacity:0.85; position:relative; }
+
+  /* ===== CARD 4: Diagonal red split ===== */
+  .c4{
+    background:var(--bg);
+    position:relative;
+    border:1px solid var(--border);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    padding:28px;
+  }
+  .c4::after{
+    content:'';
+    position:absolute;
+    top:0; right:-40px;
+    width:140px; height:300%;
+    background:var(--red);
+    transform:rotate(18deg);
+  }
+  .c4 .biz-name{ font-size:18px; position:relative; z-index:1; }
+  .c4 .role{ font-size:9px; color:var(--gray-light); margin:4px 0 16px; position:relative; z-index:1; }
+  .c4 .contact{ font-size:9px; color:var(--gray); position:relative; z-index:1; }
+
+  .c4b{
+    background:var(--bg);
+    position:relative;
+    border:1px solid var(--border);
+    display:flex; align-items:center; justify-content:center;
+    overflow:hidden;
+  }
+  .c4b::after{
+    content:'';
+    position:absolute;
+    bottom:-40px; left:-40px;
+    width:140px; height:300%;
+    background:var(--red);
+    transform:rotate(18deg);
+  }
+  .c4b img{ width:40px; filter:brightness(0) invert(1); position:relative; z-index:1; }
+
+  /* ===== CARD 5: Top border accent, monospace-ish detail ===== */
+  .c5{
+    background:var(--bg);
+    border-top:4px solid var(--red);
+    border-left:1px solid var(--border);
+    border-right:1px solid var(--border);
+    border-bottom:1px solid var(--border);
+    padding:24px 28px;
+    display:flex; flex-direction:column; justify-content:space-between;
+  }
+  .c5 .top{ display:flex; justify-content:space-between; align-items:flex-start; }
+  .c5 .biz-name{ font-size:17px; }
+  .c5 img{ width:24px; opacity:0.8; }
+  .c5 .role{ font-size:9px; color:var(--red); letter-spacing:3px; text-transform:uppercase; margin-top:4px; }
+  .c5 .contact{ font-size:9px; color:var(--gray); }
+
+  .c5b{ background:var(--bg); border-top:4px solid var(--red); border-left:1px solid var(--border); border-right:1px solid var(--border); border-bottom:1px solid var(--border); display:flex; align-items:center; justify-content:center; }
+  .c5b .biz-name{ font-size:18px; letter-spacing:8px; color:var(--gray); }
+
+  /* ===== CARD 6: Full red background, dark text ===== */
+  .c6{
+    background:var(--red);
+    display:flex; flex-direction:column; justify-content:center; align-items:flex-start;
+    padding:28px;
+  }
+  .c6 .biz-name{ font-size:18px; color:var(--bg); }
+  .c6 .role{ font-size:9px; color:rgba(10,10,10,0.7); margin:4px 0 16px; letter-spacing:2px; }
+  .c6 .contact{ font-size:9px; color:rgba(10,10,10,0.85); }
+
+  .c6b{ background:var(--bg); display:flex; align-items:center; justify-content:center; }
+  .c6b img{ width:46px; }
+
+  /* ===== CARD 7: Grid lines / blueprint feel ===== */
+  .c7{
+    background:var(--bg);
+    border:1px solid var(--border);
+    background-image:
+      linear-gradient(var(--border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size:24px 24px;
+    padding:32px;
+    display:flex; flex-direction:column; justify-content:space-between;
+    position:relative;
+  }
+  .c7 .biz-name{ font-size:17px; }
+  .c7 .role{ font-size:9px; color:var(--red); letter-spacing:3px; text-transform:uppercase; margin-top:6px;}
+  .c7 .contact{ font-size:9px; color:var(--gray-light); }
+  .c7 .corner{ position:absolute; width:14px; height:14px; border:1px solid var(--red); }
+  .c7 .tl{ top:10px; left:10px; border-right:none; border-bottom:none; }
+  .c7 .br{ bottom:10px; right:10px; border-left:none; border-top:none; }
+
+  .c7b{ background:var(--bg); border:1px solid var(--border); display:flex; align-items:center; justify-content:center;
+    background-image:linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size:24px 24px; }
+  .c7b img{ width:36px; opacity:0.9; }
+
+  /* ===== CARD 8: Vertical orientation feel but kept landscape, name huge ===== */
+  .c8{
+    background:var(--bg-3);
+    display:flex; flex-direction:column; justify-content:center;
+    padding:28px;
+    border:1px solid var(--border);
+  }
+  .c8 .biz-name{ font-size:34px; line-height:0.95; }
+  .c8 .biz-name .accent{ color:var(--red); }
+  .c8 .role{ font-size:9px; color:var(--gray-light); margin:10px 0 14px; letter-spacing:2px; }
+  .c8 .contact{ font-size:9px; color:var(--gray); }
+
+  .c8b{ background:var(--bg-3); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; }
+  .c8b .tagline{ font-size:9px; letter-spacing:4px; color:var(--gray); text-transform:uppercase; line-height:2.2; text-align:center; }
+
+  /* ===== CARD 9: Outline border frame, name bottom ===== */
+  .c9{
+    background:var(--bg);
+    border:1px solid var(--border);
+    padding:18px;
+    display:flex;
+  }
+  .c9 .inner{
+    border:1px solid var(--red);
+    width:100%; height:100%;
+    display:flex; flex-direction:column; justify-content:space-between;
+    padding:18px;
+  }
+  .c9 .biz-name{ font-size:17px; }
+  .c9 .role{ font-size:9px; color:var(--gray-light); letter-spacing:2px; }
+  .c9 .contact{ font-size:9px; color:var(--gray); }
+
+  .c9b{ background:var(--bg); border:1px solid var(--border); padding:18px; display:flex; }
+  .c9b .inner{ border:1px solid var(--red); width:100%; display:flex; align-items:center; justify-content:center; }
+  .c9b img{ width:36px; opacity:0.9; }
+
+  /* ===== CARD 10: Two-tone split horizontal, logo mark top right ===== */
+  .c10{
+    background:var(--bg);
+    border:1px solid var(--border);
+    display:grid;
+    grid-template-rows:1fr auto;
+  }
+  .c10 .top{
+    padding:24px 28px 0;
+    display:flex; justify-content:space-between; align-items:flex-start;
+  }
+  .c10 .biz-name{ font-size:18px; }
+  .c10 .top img{ width:22px; opacity:0.85; }
+  .c10 .role{ font-size:9px; color:var(--red); letter-spacing:3px; text-transform:uppercase; margin-top:6px; }
+  .c10 .bottom{ background:var(--bg-2); padding:12px 28px; border-top:1px solid var(--border); }
+  .c10 .contact{ font-size:9px; color:var(--gray); }
+
+  .c10b{ background:var(--bg-2); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; flex-direction:column; gap:8px; }
+  .c10b img{ width:40px; }
+  .c10b .tagline{ font-size:8px; letter-spacing:5px; color:var(--gray); text-transform:uppercase; }
+
+  footer{ text-align:center; margin-top:60px; color:var(--gray); font-size:12px; font-weight:300; }
+</style>
+</head>
+<body>
+  <h1>STUDIO <em>MALDITAS</em></h1>
+  <p class="sub">Calling Card Concepts — 10 Minimalist Directions (Front + Back)</p>
+
+  <div class="grid">
+
+    <!-- 1 -->
+    <div class="pair">
+      <div class="label">01 · CENTERED MARK</div>
+      <div class="cards">
+        <div class="card c1">
+          <img src="assets/logos/sm-logo-white.png" alt="logo" />
+          <div class="biz-name">ERNEL JOHN O. CARILLO</div>
+          <div class="tagline">Founder · Creative Director</div>
+          <div class="contact">+63 927 326 8790<br/>Angeles City, Pampanga</div>
+        </div>
+        <div class="card c1b"><img src="assets/logos/sm-logo-white.png" alt="logo" /></div>
+      </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="pair">
+      <div class="label">02 · RED BLOCK</div>
+      <div class="cards">
+        <div class="card c2">
+          <div class="block"><img src="assets/logos/sm-logo-white.png" alt="logo" /></div>
+          <div class="content">
+            <div class="biz-name">Ernel John O. Carillo</div>
+            <div class="role">Founder · Creative Director</div>
+            <div class="contact">+63 927 326 8790<br/>ernel@studiomalditas.com<br/>Angeles City, Pampanga</div>
+          </div>
+        </div>
+        <div class="card c2b"><div class="biz-name">MALDITAS</div></div>
+      </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="pair">
+      <div class="label">03 · SERIF EDITORIAL</div>
+      <div class="cards">
+        <div class="card c3">
+          <div class="biz-name">Studio <span>Malditas</span></div>
+          <div class="row">
+            <div>
+              <div class="role">Ernel John O. Carillo</div>
+              <div class="role">Founder · Creative Director</div>
+            </div>
+            <div class="contact" style="text-align:right;">+63 927 326 8790<br/>Angeles City, PH</div>
+          </div>
+        </div>
+        <div class="card c3b"><img src="assets/logos/sm-logo-white.png" alt="logo" /></div>
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="pair">
+      <div class="label">04 · DIAGONAL CUT</div>
+      <div class="cards">
+        <div class="card c4">
+          <div class="biz-name">Ernel John O. Carillo</div>
+          <div class="role">Founder · Creative Director</div>
+          <div class="contact">+63 927 326 8790<br/>ernel@studiomalditas.com<br/>Angeles City, Pampanga</div>
+        </div>
+        <div class="card c4b"><img src="assets/logos/sm-logo-white.png" alt="logo" /></div>
+      </div>
+    </div>
+
+    <!-- 5 -->
+    <div class="pair">
+      <div class="label">05 · TOP ACCENT BAR</div>
+      <div class="cards">
+        <div class="card c5">
+          <div class="top">
+            <div>
+              <div class="biz-name">Ernel John O. Carillo</div>
+              <div class="role">Founder · Creative Director</div>
+            </div>
+            <img src="assets/logos/sm-logo-white.png" alt="logo" />
+          </div>
+          <div class="contact">+63 927 326 8790 · Angeles City, Pampanga</div>
+        </div>
+        <div class="card c5b"><div class="biz-name">SM</div></div>
+      </div>
+    </div>
+
+    <!-- 6 -->
+    <div class="pair">
+      <div class="label">06 · BOLD RED FRONT</div>
+      <div class="cards">
+        <div class="card c6">
+          <div class="biz-name">Ernel John O. Carillo</div>
+          <div class="role">FOUNDER · CREATIVE DIRECTOR</div>
+          <div class="contact">+63 927 326 8790<br/>ernel@studiomalditas.com<br/>Angeles City, Pampanga</div>
+        </div>
+        <div class="card c6b"><img src="assets/logos/sm-logo-white.png" alt="logo" /></div>
+      </div>
+    </div>
+
+    <!-- 7 -->
+    <div class="pair">
+      <div class="label">07 · BLUEPRINT GRID</div>
+      <div class="cards">
+        <div class="card c7">
+          <div class="corner tl"></div>
+          <div class="corner br"></div>
+          <div>
+            <div class="biz-name">Ernel John O. Carillo</div>
+            <div class="role">Founder · Creative Director</div>
+          </div>
+          <div class="contact">+63 927 326 8790<br/>ernel@studiomalditas.com<br/>Angeles City, Pampanga</div>
+        </div>
+        <div class="card c7b"><img src="assets/logos/sm-logo-white.png" alt="logo" /></div>
+      </div>
+    </div>
+
+    <!-- 8 -->
+    <div class="pair">
+      <div class="label">08 · OVERSIZED TYPE</div>
+      <div class="cards">
+        <div class="card c8">
+          <div class="biz-name">ERNEL JOHN<br/>O. <span class="accent">CARILLO</span></div>
+          <div class="role">Founder · Creative Director</div>
+          <div class="contact">+63 927 326 8790 · Angeles City, Pampanga</div>
+        </div>
+        <div class="card c8b"><div class="tagline">Branding · Web · Marketing<br/>Printing · Recruitment</div></div>
+      </div>
+    </div>
+
+    <!-- 9 -->
+    <div class="pair">
+      <div class="label">09 · INNER FRAME</div>
+      <div class="cards">
+        <div class="card c9">
+          <div class="inner">
+            <div>
+              <div class="biz-name">Ernel John O. Carillo</div>
+              <div class="role">Founder · Creative Director</div>
+            </div>
+            <div class="contact">+63 927 326 8790<br/>Angeles City, Pampanga</div>
+          </div>
+        </div>
+        <div class="card c9b"><div class="inner"><img src="assets/logos/sm-logo-white.png" alt="logo" /></div></div>
+      </div>
+    </div>
+
+    <!-- 10 -->
+    <div class="pair">
+      <div class="label">10 · SPLIT FOOTER</div>
+      <div class="cards">
+        <div class="card c10">
+          <div class="top">
+            <div>
+              <div class="biz-name">Ernel John O. Carillo</div>
+              <div class="role">Founder · Creative Director</div>
+            </div>
+            <img src="assets/logos/sm-logo-white.png" alt="logo" />
+          </div>
+          <div class="bottom">
+            <div class="contact">+63 927 326 8790 · ernel@studiomalditas.com</div>
+            <div class="contact" style="margin-top:2px; color:var(--gray-light);">Angeles City, Pampanga</div>
+          </div>
+        </div>
+        <div class="card c10b">
+          <img src="assets/logos/sm-logo-white.png" alt="logo" />
+          <div class="tagline">Studio Malditas</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>Each card: 3.5in × 2in (336 × 192px @ 96dpi) — front (left) &amp; back (right)</footer>
+</body>
+</html>
